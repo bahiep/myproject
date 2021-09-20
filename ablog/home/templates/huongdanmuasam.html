@@ -1,0 +1,44 @@
+{% extends "blog/base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+    <center><h3> HƯỚNG DẪN MUA SẮM TẠI <a href="/" class="btn btn-primary">HOÀN TIỀN LIỀN</a> Website</h3></center>
+<a> Đây là hình thức Affiliate Marketing, sau khi bạn mua hàng chúng tôi sẽ hoàn lại tiền hoa hồng cho bạn:</a><br/>
+<a> <strong>Bước 1:</strong> Bạn click vào hình ảnh Shop thương mại điện tử mà bạn muốn</a><br/>
+<img src="/static/images/00.jpg" class="responsive-img" style="max-height:150px; padding:5px"/><br/>
+<a> <strong>Bước 2:</strong> Sau khi Click trang web sẽ chuyển đến trang chủ của Shop mà bạn muốn, Bạn tiến hành mua hàng bình thường </a><br/>
+<a> <strong>Bước 3:</strong> Sau khi mua hàng xong bạn quay lại HOÀN TIỀN LIỀN Website: </a><br/>
+<li>Trên thanh menu chọn tài khoản->Hóa Đơn</li>
+<img src="/static/images/01.jpg" class="responsive-img" style="max-height:200px; padding:5px"/><br/>
+<li>Tạo hóa đơn</li>
+<img src="/static/images/02.jpg" class="responsive-img" style="max-height:200px; padding:5px"/><br/>
+<li>Cập nhật thông tin xác nhận mua hàng từ Shop và tạo hóa đơn</li>
+<img src="/static/images/03.jpg" class="responsive-img" style="max-height:200px; padding:5px"/><br/><BR/>
+<a href="/" class="btn btn-primary btn-sm">QUAY LẠI MUA SẮM</a><br/><br/><br/>
+{% comment %} <a href="/" class="btn btn-secondary btn-sm">HƯỚNG DẪN RÚT TIỀN</a><BR/> {% endcomment %}
+    {% for shop in Shop %}
+        <a href="{{shop.body}}"><img src="{{shop.image.url}}" class="responsive-img" style="max-height:150px;max-width:150px; padding:5px"/>
+        {% comment %} <div class="card mb-3" style="max-width: 540px;">
+            <div class="row g-0">
+                <div class="col-md-4">
+                
+                <img src="{{shop.image.url}}" class="img-fluid rounded-start">
+                
+                </div>
+                <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title"><a href="/home/{{shop.id}}">{{shop.title}}</a></h5>
+                    <p class="card-text">{{shop.body|slice:100|safe}}</p>
+                    <p class="card-text"><small class="text-muted">{{shop.date|date:"d-m-Y"}}</small></p>
+                </div>
+                </div>
+            </div>
+        </div> {% endcomment %}
+        
+    {% endfor %}
+    
+    <br/>
+    {% comment %} <small>{% include "pagination.html" with page=page_obj %}</small> {% endcomment %}
+
+{% endblock %}

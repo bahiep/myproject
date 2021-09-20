@@ -1,0 +1,58 @@
+{% extends "blog/base.html" %}
+
+{% block title %}Hóa đơn{% endblock %}
+
+{% block content %}
+    <center><h4>Lịch sử rút tiền</h4>
+    <a href="{% url 'add_withdraw' %}" class="btn btn-secondary btn-sm">Tạo lệnh rút tiền</a><br/></center> <br/>
+    {% for withdraw in Withdraw %}
+        {% if withdraw.author.id == user.id %}
+            {% comment %} <div class="card mb-3" style="max-width: 540px;">
+                <div class="row g-0">
+                    
+                    <div class="col-md-8">
+                    <div class="card-body">
+                        <center>
+                        <h5 class="card-title"><a href="/blog/{{post.id}}">{{bill.title}}</a></h5>
+                        <p class="card-text">{{bill.body|slice:100|safe}}</p>
+                        <p class="card-text"><small class="text-muted">{{bill.date|date:"d-m-Y"}}</small></p>
+                        </center>
+                    </div>
+                    </div>
+                    <div class="col-md-4">
+                    
+                    <img src="{{bill.image.url}}" class="img-fluid rounded-start">
+                    
+                    </div>
+                </div>
+            </div> {% endcomment %}
+            <center>
+            <div class="card text-center" style="width: 18rem;">
+                
+                <div class="card-body">
+                    <h5 class="card-title">{{withdraw.fullname}}</h5>
+                    <p class="card-text">{{withdraw.bankname}}</p>
+                    <p class="card-text">{{withdraw.accountnumber}}</p>
+                    <p class="card-text">{{withdraw.status}}</p>
+                    {% comment %} <a href="#" class="btn btn-primary">Cập nhật</a> {% endcomment %}
+                </div>
+            </div>
+            </center>
+            <br/><hr><br/>
+        {% endif %}
+        
+        
+    {% endfor %}
+    
+    <br/>
+    {% comment %} <small>{% include "pagination.html" with page=page_obj %}</small> {% endcomment %}
+
+{% comment %} {% if page_obj.has_previous  %}
+    <a href="{{request.path}}?page={{page_obj.previous_page_number}}">Trước đó</a>
+{% endif %}
+{% if page_obj.has_next  %}
+    <a href="{{request.path}}?page={{page_obj.next_page_number}}">Tiếp theo</a>
+{% endif %} {% endcomment %}
+<br/>
+
+{% endblock %}

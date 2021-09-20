@@ -1,0 +1,51 @@
+{% extends "blog/base.html" %}
+
+{% block title %}blog{% endblock %}
+
+{% block content %}
+
+    {% for venue in venues %}
+
+        <div class="card mb-3" style="max-width: 540px;">
+            <div class="row g-0">
+                <div class="col-md-4">
+                
+                <img src="{{venue.image.url}}" class="img-fluid rounded-start">
+                
+                </div>
+                <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title"><a href="/blog/{{post.id}}">{{venue.title}}</a></h5>
+                    <p class="card-text">{{venue.body|slice:100|safe}}</p>
+                    <p class="card-text"><small class="text-muted">{{post.date|date:"d-m-Y"}}</small></p>
+                </div>
+                </div>
+            </div>
+        </div>
+        {% comment %} <div class="row">
+            <div class="col-sm-4">
+                <center><img src="{{post.image.url}}" width="220px" heigh="180px"/></center>
+            </div>
+            <div class="col-sm-6">
+                <h4><a href="/blog/{{post.id}}">{{post.title}}</a></h4>
+                <h6>{{post.date|date:"d-m-Y"}}</h6>
+                <p>{{post.body|slice:400|safe}}</p>
+                <br/>
+            </div>
+        </div>
+        <br/> {% endcomment %}
+        
+    {% endfor %}
+    
+    <br/>
+    {% comment %} <small>{% include "pagination.html" with page=page_obj %}</small> {% endcomment %}
+
+{% comment %} {% if page_obj.has_previous  %}
+    <a href="{{request.path}}?page={{page_obj.previous_page_number}}">Trước đó</a>
+{% endif %}
+{% if page_obj.has_next  %}
+    <a href="{{request.path}}?page={{page_obj.next_page_number}}">Tiếp theo</a>
+{% endif %} {% endcomment %}
+<br/>
+
+{% endblock %}

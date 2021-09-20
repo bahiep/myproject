@@ -1,0 +1,17 @@
+{% extends "blog/base.html" %}
+
+{% block title %}Create an account{% endblock %}
+
+{% block content %}
+    <h1>Tạo tài khoản</h1>
+    <p>Vui lòng điền thông tin vào bảng dưới đây:</p>
+    <form action="." method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <table>
+    {{ user_form.as_table }}
+    {{ profile_form.as_table }}
+    </table>
+    <br/>
+    <p><input type="submit" value="Tạo tài khoản"></p>
+    </form>
+{% endblock %}

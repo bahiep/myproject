@@ -1,0 +1,19 @@
+{% extends "blog/base.html" %}
+
+{% block title %}Tạo Hóa đơn{% endblock %}
+{% block content %}
+    {% if user.is_authenticated %}
+        <h3>Tạo hóa đơn</h3>
+        <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <table>
+            {% comment %} {{ form.media }} {% endcomment %}
+            {{form.as_table}}
+        </table>
+        <br/>
+        <button class="btn btn-secondary btn-sm">Tạo hóa đơn</button>
+        </form>
+    {% else %}
+        You are not allowed here!
+    {% endif %}
+{% endblock %}

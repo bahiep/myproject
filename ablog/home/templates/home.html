@@ -1,0 +1,36 @@
+{% extends "blog/base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+    <center><h3> Chào mừng bạn đến với <a href="/" class="btn btn-primary">HOÀN TIỀN LIỀN</a> Website</h3></center>
+<a> Lý do nên mua hàng tại Hoàn Tiền Liền Website:</a><br/>
+<a> 1. Tỷ lệ hoàn tiền cao</a><br/>
+<a> 2. Rút tiền được liền không quy định số tiền tối thiểu được rút </a><br/>
+<a href="/huongdanmuasam" class="btn btn-secondary btn-sm">HƯỚNG DẪN MUA SẮM</a>
+<a href="/huongdanruttien" class="btn btn-secondary btn-sm">HƯỚNG DẪN RÚT TIỀN</a><BR/>
+    {% for shop in Shop %}
+        <a href="{{shop.body}}"><img src="{{shop.image.url}}" class="responsive-img" style="max-height:150px;max-width:150px; padding:5px"/>
+        {% comment %} <div class="card mb-3" style="max-width: 540px;">
+            <div class="row g-0">
+                <div class="col-md-4">
+                
+                <img src="{{shop.image.url}}" class="img-fluid rounded-start">
+                
+                </div>
+                <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title"><a href="/home/{{shop.id}}">{{shop.title}}</a></h5>
+                    <p class="card-text">{{shop.body|slice:100|safe}}</p>
+                    <p class="card-text"><small class="text-muted">{{shop.date|date:"d-m-Y"}}</small></p>
+                </div>
+                </div>
+            </div>
+        </div> {% endcomment %}
+        
+    {% endfor %}
+    
+    <br/>
+    {% comment %} <small>{% include "pagination.html" with page=page_obj %}</small> {% endcomment %}
+
+{% endblock %}

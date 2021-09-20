@@ -1,0 +1,29 @@
+{% extends "blog/base.html" %}
+
+{% block title %}Log-in{% endblock %}
+{% block content %}
+    <h1>Đăng nhập</h1>
+    {% if form.errors %}
+        <p>
+            Tải khoản hoặc mật khẩu không đúng. Vui lòng đăng nhập lại
+        </p>
+    {% else %}
+        <p>Điền thông tin dưới đây để đăng nhập:</p>
+    {% endif %}
+    <div class="login-form">
+        <form action="{% url 'login' %}" method="POST">
+            {% csrf_token %}
+            {% for key,value in form.errors.item %}
+                {{value}}
+            {% endfor %}
+            
+            {% comment %} <table>
+            {{ form.as_table }}
+            </table> {% endcomment %}
+            <p><label>Tài khoản </label> {{form.username}}</p>
+            <p><label>Mật khẩu </label> {{form.password}}</p>
+            <input type="hidden" name="next" value="{{ next }}" />
+            <p><input type="submit" value="Đăng nhập"></p>
+        </form>
+    </div>
+{% endblock %}
